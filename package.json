@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "update": "npm run build && cd dist && git add . && git commit -m \"build\" && git push && cd ..",
+    "update": "npm run build && git add . && git commit -m  \"build\" && git push && cd dist && git add . && git commit -m \"build\" && git push && cd ..",
     "update-source": "git add . && git commit -m \"build\""
   },
   "dependencies": {
