@@ -106,15 +106,26 @@ const removeTask = (topicId, taskId) => {
 const judul = ref('')
 const tasks = ref([''])
 
-
 const submit = () => {
-  data.value.push({
-    id: uuid(),
-    judul: judul.value,
-    timeStamp: Date.now(),
-    item: tasks.value.map(t => ({ id: uuid(), text: t }))
-  })
+  const trimmedJudul = judul.value.trim()
+  if (!trimmedJudul) return
+
+  const existingTopic = data.value.find(t => t.judul === trimmedJudul)
+
+  if (existingTopic) {
+    const newItems = tasks.value.map(t => ({ id: uuid(), text: t }))
+    existingTopic.item.push(...newItems)
+  } else {
+    data.value.push({
+      id: uuid(),
+      judul: trimmedJudul,
+      timeStamp: Date.now(),
+      item: tasks.value.map(t => ({ id: uuid(), text: t }))
+    })
+  }
+
   judul.value = ''
   tasks.value = ['']
 }
+
 </script>
