@@ -2,7 +2,7 @@
 
 <script setup lang='ts'>
 	import { RouterLink } from 'vue-router'
-	import { pomodoroStore } from '@/stores/pomodoro/setting.ts'
+	import pomodoroStore from 'store/pomodoro.ts'
 	
 	let app = pomodoroStore()
 </script>
@@ -17,20 +17,21 @@
 			</button>
 
 			<section id='form' class='relative mt-20'>
-				<form>
+				<form class='flex flex-col gap-20'>
 					<div id='focus' class="relative">
 						<input v-model.number='app.focus' id='focus_input' type="number" required placeholder=' ' class='w-full px-4 py-2 rounded-md text-white'>
 						<div class='focus_label mx-5 my-2 font-bold'>
 							focus
 						</div>
 					</div>
-
-					<div id='rest' class="relative top-20">
+					
+					<div id='rest' class="relative">
 						<input v-model.number='app.rest' id='rest_input' type="number" required placeholder=' ' class='w-full px-4 py-2 rounded-md text-white'>
 						<div class='rest_label mx-5 my-2 font-bold'>
 							rest
 						</div>
 					</div>
+					
 				</form>
 			</section>
 		</section>
