@@ -63,9 +63,36 @@ const router = createRouter({
   ],
 })
 
+
 router.afterEach((ctx) => {
-	const defaultTitle: string = 'nauva';
-  document.title = typeof ctx.meta.title === 'string' ? ctx.meta.title : defaultTitle
+  const defaultTitle = 'nauva'
+  const defaultDesc = 'Deskripsi default nauva'
+  const defaultKeywords = 'default'
+  
+  const title = typeof ctx.meta.title === 'string' ? ctx.meta.title : defaultTitle
+  const description = typeof ctx.meta.desc === 'string' ? ctx.meta.desc : defaultDesc
+  const keywords = typeof ctx.meta.keywords === 'string' ? ctx.meta.keywords : defaultKeywords
+
+  document.title = title
+
+  const setMeta = (name, content, isProperty = false) => {
+    const attr = isProperty ? 'property' : 'name'
+    let tag = document.querySelector(`meta[${attr}="${name}"]`)
+    if (tag) {
+      tag.setAttribute('content', content)
+    } else {
+      tag = document.createElement('meta')
+      tag.setAttribute(attr, name)
+      tag.setAttribute('content', content)
+      document.head.appendChild(tag)
+    }
+  }
+
+  setMeta('description', description)
+  setMeta('keywords', keywords)
+  setMeta('og:title', title, true)
+  setMeta('og:description', description, true)
 })
+
 
 export default router
