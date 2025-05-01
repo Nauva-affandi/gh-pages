@@ -9,9 +9,9 @@ const firebaseConfig = {
   projectId: import.meta.env.APP_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.APP_FIREBASE_APP_ID
+  appId: import.meta.env.APP_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig)
-console.log(firebaseConfig)
-console.log(app)
+const app = initializeApp(firebaseConfig);
+console.log(firebaseConfig);
+console.log(app);

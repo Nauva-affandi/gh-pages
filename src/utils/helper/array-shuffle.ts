@@ -1,4 +1,7 @@
-export default function shuffleArray<T>(arr: T[], CHAOS_ITER: number = 1000): T[] {
+export default function shuffleArray<T>(
+  arr: T[],
+  CHAOS_ITER: number = 1000,
+): T[] {
   const len = arr.length;
 
   // Step 1: Fisher-Yates dasar (O(n))
@@ -6,7 +9,7 @@ export default function shuffleArray<T>(arr: T[], CHAOS_ITER: number = 1000): T[
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  
+
   for (let k = 0; k < CHAOS_ITER; k++) {
     const idx1 = Math.floor(Math.random() * len);
     const idx2 = Math.floor(Math.random() * len);

@@ -1,13 +1,13 @@
-import { defineStore } from 'pinia'
-import { ref, reactive } from 'vue'
+import { defineStore } from "pinia";
+import { ref, reactive } from "vue";
 
-const loginUiStore = defineStore('form login', () => {
+const loginUiStore = defineStore("form login", () => {
   const user = reactive({
-    email: '',
-    pw: '',
-    pw_confirm: ''
-  })
-  
+    email: "",
+    pw: "",
+    pw_confirm: "",
+  });
+
   const err = reactive({
     login: {
       email: {
@@ -16,95 +16,94 @@ const loginUiStore = defineStore('form login', () => {
         // 0 : invalid
         // 1 : valid
         // 2 : typing / hide
-        msg: '',
+        msg: "",
       },
       pw: {
         show: false,
         status: 2,
-        msg: '',
+        msg: "",
       },
       valid: true,
-      msg: '',
+      msg: "",
     },
     signin: {
       email: {
-        show: false, 
+        show: false,
         status: 2,
-        msg: '',
+        msg: "",
       },
       pw: {
         show: false,
         status: 2,
-        msg: '',
+        msg: "",
       },
       pw_confirm: {
         show: false,
         status: 2,
-        msg: '',
+        msg: "",
       },
       valid: true,
-      msg: ''
-    }
-  })
-  
+      msg: "",
+    },
+  });
+
   // show auth ui
-  const show = ref(false) // false
-  const use = (i:string = 'toggle') => {
+  const show = ref(false); // false
+  const use = (i: string = "toggle") => {
     try {
-      const timer = 170
-      status.value = true
-      if(i == 'show') {
-        setTimeout(() => show.value = true, timer) 
-      } else if(i == 'hide') {
-        setTimeout(() => show.value = false, timer) 
-      } else if(i == 'toggle') {
-        setTimeout(() => show.value = !show.value, timer) 
+      const timer = 170;
+      status.value = true;
+      if (i == "show") {
+        setTimeout(() => (show.value = true), timer);
+      } else if (i == "hide") {
+        setTimeout(() => (show.value = false), timer);
+      } else if (i == "toggle") {
+        setTimeout(() => (show.value = !show.value), timer);
       }
-    } catch(err) {
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
   // switch ui login/signin
-  const status = ref(true) // true
+  const status = ref(true); // true
   const toggle_status = () => {
     try {
-      status.value = !status.value
-    } catch(err) {
-      console.log(err)
+      status.value = !status.value;
+    } catch (err) {
+      console.log(err);
     }
-  }
-  
+  };
+
   // switch hide & show eye login pw
-  const pw_login_eye = ref(false) // false
+  const pw_login_eye = ref(false); // false
   const toggle_pw_login = () => {
     try {
-      pw_login_eye.value = !pw_login_eye.value
-    } catch(err) {
-      console.log(err)
+      pw_login_eye.value = !pw_login_eye.value;
+    } catch (err) {
+      console.log(err);
     }
-  }
-  
+  };
+
   // switch hide & show eye signin pw
-  const pw_signin_eye = ref(false) // false
+  const pw_signin_eye = ref(false); // false
   const toggle_pw_signin = () => {
     try {
-      pw_signin_eye.value = !pw_signin_eye.value
-    } catch(err) {
-      console.log(err)
+      pw_signin_eye.value = !pw_signin_eye.value;
+    } catch (err) {
+      console.log(err);
     }
-  }
-  
+  };
+
   // switch hide & show eye signin pw confirm
-  const pw_confirm_signin_eye = ref(false) // flase
+  const pw_confirm_signin_eye = ref(false); // flase
   const toggle_pw_confirm_signin = () => {
     try {
-      pw_confirm_signin_eye.value = !pw_confirm_signin_eye.value
-    } catch(err) {
-      console.log(err)
+      pw_confirm_signin_eye.value = !pw_confirm_signin_eye.value;
+    } catch (err) {
+      console.log(err);
     }
-  }
-  
+  };
 
   return {
     user,
@@ -119,7 +118,7 @@ const loginUiStore = defineStore('form login', () => {
     toggle_pw_signin,
     pw_confirm_signin_eye,
     toggle_pw_confirm_signin,
-  }
-})
+  };
+});
 
-export default loginUiStore
+export default loginUiStore;

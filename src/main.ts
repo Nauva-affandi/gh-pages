@@ -1,26 +1,24 @@
-import '@/config/firebase/app.ts'
+import "@/config/firebase/app.ts";
 
-import './assets/style/main.css'
+import "./assets/style/main.css";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 
-import App from './App.vue'
-import router from './router'
+import App from "./App.vue";
+import router from "./router";
 
-const app = createApp(App)
+import darkModeStore from "store/darkMode.ts";
 
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
-app.use(pinia)
+const app = createApp(App);
 
-app.use(router)
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
+app.use(pinia);
 
-app.mount('#app')
+darkModeStore().init();
 
+app.use(router);
 
-
-
-
-
+app.mount("#app");
